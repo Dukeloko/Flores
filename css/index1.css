@@ -1,0 +1,245 @@
+/* CSS para index1.html */
+
+/* Estilos para los puntitos amarillos */
+.particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background-color: #ffff00;
+    border-radius: 50%;
+    box-shadow:
+        0 0 10px #ffff00,
+        0 0 20px #ffff00;
+    animation: fall linear infinite;
+    z-index: 10;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-100px) translateX(0);
+    }
+
+    100% {
+        transform: translateY(100vh) translateX(30px);
+    }
+}
+
+.container {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Aura morada gigante que cubre la página */
+body::before {
+    content: "";
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300vw;
+    /* Más ancho que la pantalla */
+    height: 170vh;
+    /* Más alto que la pantalla */
+    background: radial-gradient(circle,
+            rgba(138, 43, 226, 0.15) 0%,
+            /* Morado claro */
+            rgba(75, 0, 130, 0.1) 40%,
+            /* Índigo */
+            rgba(0, 0, 0, 0) 70%
+            /* Transparente */
+        );
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.7;
+    animation: aura-expand 8s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* Efecto de expansión del aura */
+@keyframes aura-expand {
+    0% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(0.95);
+        opacity: 0.5;
+    }
+}
+
+/* Ajustar el z-index de las partículas para que no se superpongan mal */
+.particles {
+    z-index: 10;
+}
+
+.flowers {
+    position: relative;
+    z-index: 5;
+}
+
+/* Efecto de aura que sube y forma texto */
+.aura-text {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Courier New", monospace;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0;
+    z-index: 20;
+    pointer-events: none;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.aura-text span {
+    display: inline-block;
+    color: #8a2be2;
+    text-shadow:
+        0 0 10px #8a2be2,
+        0 0 20px #8a2be2;
+    font-size: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    margin: 5px 0;
+}
+
+/* Cursor parpadeante */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 32px;
+    background-color: #8a2be2;
+    margin-left: 5px;
+    animation: blink 0.7s infinite;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Cambiar el color de las raíces (tallos) a verde */
+.flower__line {
+    background-color: #107b17 !important;
+    box-shadow:
+        0 0 5px #107b17,
+        0 0 10px #107b17 !important;
+}
+
+/* Estilo hacker para el texto final */
+.final-message {
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Courier New", monospace;
+    text-align: center;
+    color: #8a2be2;
+    text-shadow: 0 0 15px #8a2be2;
+    opacity: 0;
+    z-index: 30;
+    pointer-events: none;
+    font-size: 32px;
+    line-height: 1.6;
+    white-space: pre-line;
+    max-width: 90%;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.final-message.active {
+    color: red;
+    text-shadow:
+        0 0 20px red,
+        0 0 40px red,
+        0 0 80px red,
+        0 0 100px red;
+    animation: text-pulse 0.5s infinite alternate;
+}
+
+@keyframes text-pulse {
+    from {
+        text-shadow:
+            0 0 30px yellow,
+            0 0 50px yellow;
+    }
+
+    to {
+        text-shadow:
+            0 0 40px yellow,
+            0 0 70px yellow,
+            0 0 100px yellow;
+    }
+}
+
+/* Modificaciones para la flor morada con pétalos rojos */
+.flower__leaf {
+    background-color: #0ca518 !important;
+    box-shadow:
+        0 0 10px #0ca518,
+        0 0 20px #0ca518 !important;
+}
+
+.flower__leaf::before {
+    background-color: #26b31f !important;
+    box-shadow:
+        0 0 10px #4cb12d,
+        0 0 20px #0ea42c !important;
+}
+
+.flower__light {
+    background-color: yellow !important;
+    box-shadow:
+        0 0 5px yellow,
+        0 0 10px #ccea08 !important;
+}
+
+/* Aura que sube desde la flor */
+.flower-aura {
+    position: fixed;
+    bottom: -100vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1200px;
+    height: 150vh;
+    background: linear-gradient(to top,
+            rgba(238, 246, 7, 0.9) 0%,
+            rgba(211, 214, 12, 0.6) 30%,
+            rgba(139, 157, 5, 0.3) 60%,
+            transparent 90%);
+    border-radius: 50% 50% 0 0;
+    filter: blur(30px);
+    z-index: 15;
+    opacity: 1;
+    transition: bottom 1.5s ease-out;
+}
